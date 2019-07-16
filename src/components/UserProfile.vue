@@ -1,5 +1,6 @@
 <template>
     <div class="profile" v-if="isLoading">
+        <button @click="backUser" class="backto">Back to Home</button>
         <div class="personal">
             <img src="../assets/profile_photo.png" alt="">
             <div class="title">
@@ -11,7 +12,7 @@
         <hr>
         <div class="posts">
             <h2>Postlar</h2>
-            <router-link :to="postLink">Postlar</router-link>
+            <button @click="postLink">Postlar</button>
             <hr>
         </div>
 
@@ -72,11 +73,15 @@
                     this.isLoading = true;
                 })
         },
-        computed: {
-            postLink() {
-                return `/users/${this.$route.params.id}/posts`;
+        methods: {
+            backUser() {
+                this.$router.push({ name: 'home', params: { id: this.$route.params.id } });
             }
-        }
+            ,
+            postLink() {
+                this.$router.push({ name: 'post', params: { id: this.$route.params.id } });
+            }
+        },
     }
 </script>
 
@@ -91,4 +96,17 @@ img {
 .title {
     padding-left: 100px;
 }
+.backto {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    width: 120px;
+    height: 30px;
+    border-radius: 40px;
+    color: white;
+    background-color: #17a2b8;
+    border: 1px solid transparent;
+    margin-right: 12px;
+}
+
 </style>

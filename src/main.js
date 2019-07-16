@@ -13,9 +13,9 @@ Vue.use(Router);
 
 const router = new Router ({
   routes: [
-    { path: '/', component: Home },
-    { path: '/user/:id', component: UserProfile },
-    { path: '/user/:userId/posts', component: UserPosts }
+    { path: '/', name: 'home' ,component: Home },
+    { path: '/user/:id', name: 'user' ,component: UserProfile },
+    { path: '/user/:id/posts', name: 'post' ,component: UserPosts }
   ],
   mode: 'history'
 });

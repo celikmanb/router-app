@@ -1,5 +1,7 @@
 <template>
     <div>
+        <h1>User List</h1>
+        <hr>
         <template v-for="user in users">
             <User :user="user"></User>
         </template>
@@ -30,5 +32,10 @@
 </script>
 
 <style scoped>
-
+h1 {
+    text-align: center;
+}
+hr {
+    margin-bottom: 50px;
+}
 </style>
