@@ -1,6 +1,8 @@
 <template>
-    <div class="profile" v-if="isLoading">
+    <div class="profile" >
+        <h1 v-if="!isLoading">Loading...</h1>
         <button @click="backUser" class="backto">Back to Home</button>
+        <button @click="nextUser" class="nextto">Next other User</button>
         <div class="personal">
             <img src="../assets/profile_photo.png" alt="">
             <div class="title">
@@ -60,19 +62,11 @@
                 isLoading: false
             }
         },
+        watch: {
+          '$route': 'getData'
+        },
         created() {
-            const url = 'https://jsonplaceholder.typicode.com/users';
-
-            axios.get(url, {
-                params: {
-                    id: this.$route.params.id
-                }
-            })
-                .then(res => { return res })
-                .then(data => {
-                    this.users = data.data;
-                    this.isLoading = true;
-                })
+            this.getData();
         },
         methods: {
             backUser() {
@@ -81,6 +75,23 @@
             ,
             postLink() {
                 this.$router.push({ name: 'post', params: { id: this.$route.params.id } });
+            },
+            nextUser() {
+                this.$router.push({ name: 'user', params: { id: parseInt(this.$route.params.id) + 1 } });
+            },
+            getData() {
+                const url = 'https://jsonplaceholder.typicode.com/users';
+
+                axios.get(url, {
+                    params: {
+                        id: this.$route.params.id
+                    }
+                })
+                    .then(res => { return res })
+                    .then(data => {
+                        this.users = data.data;
+                        this.isLoading = true;
+                    })
             }
         },
     }
@@ -111,6 +122,18 @@
         position: absolute;
         top: 5%;
         right: 3%;
+        width: 120px;
+        height: 30px;
+        border-radius: 40px;
+        color: white;
+        background-color: #b81719;
+        border: 1px solid transparent;
+        margin-right: 12px;
+    }
+    .nextto{
+        position: absolute;
+        top: 5%;
+        right: 12%;
         width: 120px;
         height: 30px;
         border-radius: 40px;

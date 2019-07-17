@@ -26,7 +26,6 @@
     .post_item {
         position: relative;
         flex: 1 0 22rem;
-        /*margin: 1rem;*/
         color: #090809;
         cursor: pointer;
         width: 270px;
