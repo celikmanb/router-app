@@ -12,11 +12,6 @@
         props: {
             user: { type: Object, required: true }
         },
-        computed: {
-            // userLink() {
-            //     return `/user/${this.user.id}`
-            // }
-        },
         methods: {
             userLink() {
                 this.$router.push({ name: 'user', params: { id: this.user.id } });

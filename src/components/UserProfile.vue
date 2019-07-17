@@ -5,14 +5,14 @@
             <img src="../assets/profile_photo.png" alt="">
             <div class="title">
                 <h1>{{users[id].name}}</h1>
-                <label>#{{users[id].username}}</label>
+                <label class="username">#{{users[id].username}}</label>
             </div>
             <br>
         </div>
         <hr>
         <div class="posts">
             <h2>Postlar</h2>
-            <button @click="postLink">Postlar</button>
+            <button @click="postLink" class="post_button">Postlar</button>
             <hr>
         </div>
 
@@ -24,8 +24,9 @@
             <p><strong>Adresi:</strong> {{users[id].address.street}}, {{users[id].address.suite}}, {{users[id].address.city}},
                 {{users[id].address.street}}, {{users[id].address.zipcode}}
             </p>
+            <hr>
         </div>
-        <hr>
+
         <div class="project">
             <h2>Projeler</h2>
             <br>
@@ -33,9 +34,9 @@
                 <strong>Proje Linki: </strong>
                 <a :href="'{{users[id].website}}'">{{users[id].website}}</a>
             </p>
-
+            <hr>
         </div>
-        <hr>
+
         <div class="company">
             <h2>Şirket Bilgileri</h2>
             <br>
@@ -86,27 +87,47 @@
 </script>
 
 <style scoped>
-img {
-    width: 200px;
-    height: 200px;
-}
-.personal {
-    display: flex;
-}
-.title {
-    padding-left: 100px;
-}
-.backto {
-    position: absolute;
-    top: 5%;
-    right: 3%;
-    width: 120px;
-    height: 30px;
-    border-radius: 40px;
-    color: white;
-    background-color: #17a2b8;
-    border: 1px solid transparent;
-    margin-right: 12px;
-}
+    div {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    h2 {
+        color: #187381;
+    }
+    img {
+        width: 150px;
+        height: 150px;
+    }
+    .username{
+        color: #4845fb;
+    }
+    .personal {
+        display: flex;
+    }
+    .title {
+        padding-left: 100px;
+    }
+    .backto {
+        position: absolute;
+        top: 5%;
+        right: 3%;
+        width: 120px;
+        height: 30px;
+        border-radius: 40px;
+        color: white;
+        background-color: #17a2b8;
+        border: 1px solid transparent;
+        margin-right: 12px;
+    }
+    .post_button {
+        width: 120px;
+        height: 30px;
+        border-radius: 40px;
+        color: white;
+        background-color: #17a2b8;
+        border: 1px solid transparent;
+        margin-right: 12px;
+    }
+
 
 </style>
